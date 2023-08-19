@@ -45,9 +45,23 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgba(0, 0, 255, 0.137);
+  background-color: rgba(0, 0, 104, 0.075);
   z-index: 1;
 }
+
+/*.red-button {
+  background-color: red;
+  color: red;
+}*/
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
 table {
   width: 100%;
   border: 1px solid black;
