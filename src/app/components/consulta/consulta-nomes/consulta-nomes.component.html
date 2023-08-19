@@ -1,0 +1,39 @@
+<div *ngIf="loader" class="loader-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="container">
+  <h2 align="center">Consulta de Nomes</h2>
+  <form [formGroup]="form" class="search-form">
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Insira um nome: </mat-label>
+        <input formControlName="name" type="text" matInput />
+      </mat-form-field>
+      <button (click)="submitForm()" mat-raised-button color="primary">
+        Consultar
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="nameData" class="result-section">
+    <h3>Resultados para '{{ name }}':</h3>
+
+
+    <table  mat-table recycleRows [dataSource]="dataSource">
+      <ng-container matColumnDef="periodo">
+        <th mat-header-cell *matHeaderCellDef>Período</th>
+        <td mat-cell *matCellDef="let element"> {{element.periodo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="frequencia">
+        <th mat-header-cell *matHeaderCellDef> Frequência </th>
+        <td mat-cell *matCellDef="let element"> {{element.frequencia}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</div>
