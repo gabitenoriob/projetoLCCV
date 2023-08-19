@@ -9,10 +9,20 @@
       <mat-form-field appearance="outline">
         <mat-label>Insira um nome: </mat-label>
         <input formControlName="name" type="text" matInput />
+        <mat-error *ngIf="form.get('name')?.hasError('pattern')">
+          Somente letras e sem espaços são permitidos.
+        </mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          O campo de nome é obrigatório.
+        </mat-error>
       </mat-form-field>
-      <button (click)="submitForm()" mat-raised-button color="primary">
+      
+      <button (click)="submitForm()" mat-raised-button color="primary" [disabled]="form.invalid">
         Consultar
       </button>
+      
+     
+      
     </div>
   </form>
 
@@ -35,5 +45,12 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
+  <div class="total-row">
+    <span>Total:</span>
+    <span>{{ getTotalFrequencia() }}</span>
+  </div>
+
+  
+  
 
 </div>
